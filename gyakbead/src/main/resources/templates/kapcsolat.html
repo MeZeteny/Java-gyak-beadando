@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Kapcsolat – F1 Adatbázis</title>
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
+    <noscript><link rel="stylesheet" th:href="@{/assets/css/noscript.css}" /></noscript>
+</head>
+<body class="is-preload">
+
+<section id="sidebar">
+    <div class="inner">
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Főoldal</a></li>
+                <li><a th:href="@{/adatbazis}">Adatbázis</a></li>
+                <li><a th:href="@{/kapcsolat}">Kapcsolat</a></li>
+                <li><a href="#two">Üzenetek</a></li>
+                <li><a href="#three">Diagram</a></li>
+                <li><a href="#three">CRUD</a></li>
+                <li><a href="#three">Restful</a></li>
+                <li><a href="#three">Regisztráció</a></li>
+                <li><a href="#three">Bejelentkezés</a></li>
+            </ul>
+        </nav>
+    </div>
+</section>
+
+<div id="wrapper">
+
+    <div id="main" class="container">
+        <h1>Kapcsolat</h1>
+
+        <!-- Siker üzenet -->
+        <div th:if="${siker}" class="box" style="background:#d4edda;color:#155724;padding:15px;border-radius:5px;margin-bottom:20px;">
+            Köszönjük! Az üzeneted elküldve és elmentve az adatbázisba!
+        </div>
+
+        <form th:action="@{/kapcsolat}" th:object="${uzenet}" method="post">
+            <div class="row gtr-uniform">
+                <div class="col-6 col-12-xsmall">
+                    <input type="text" th:field="*{nev}" placeholder="Neved" required />
+                    <div th:if="${#fields.hasErrors('nev')}" th:errors="*{nev}" style="color:red;"></div>
+                </div>
+                <div class="col-6 col-12-xsmall">
+                    <input type="email" th:field="*{email}" placeholder="Email címed" required />
+                    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red;"></div>
+                </div>
+                <div class="col-12">
+                    <input type="text" th:field="*{targy}" placeholder="Tárgy" required />
+                    <div th:if="${#fields.hasErrors('targy')}" th:errors="*{targy}" style="color:red;"></div>
+                </div>
+                <div class="col-12">
+                    <textarea th:field="*{szoveg}" rows="6" placeholder="Üzeneted..." required></textarea>
+                    <div th:if="${#fields.hasErrors('szoveg')}" th:errors="*{szoveg}" style="color:red;"></div>
+                </div>
+                <div class="col-12">
+                    <ul class="actions">
+                        <li><input type="submit" value="Küldés" class="primary" /></li>
+                        <li><a th:href="@{/}" class="button">Vissza a főoldalra</a></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script th:src="@{/assets/js/jquery.min.js}"></script>
+<script th:src="@{/assets/js/jquery.scrollex.min.js}"></script>
+<script th:src="@{/assets/js/jquery.scrolly.min.js}"></script>
+<script th:src="@{/assets/js/browser.min.js}"></script>
+<script th:src="@{/assets/js/breakpoints.min.js}"></script>
+<script th:src="@{/assets/js/util.js}"></script>
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>
