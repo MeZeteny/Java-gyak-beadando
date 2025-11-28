@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}">
+
+<div layout:fragment="content">
+<div id="wrapper">
+    <div style="max-width:400px;margin:100px auto;text-align:center;">
+        <h1>Regisztráció</h1>
+        <div th:if="${error}" style="color:red;margin:20px" th:text="${error}"></div>
+        <div th:if="${success}" style="color:green;margin:20px" th:text="${success}"></div>
+
+        <form th:action="@{/register}" method="post">
+            <div class="row gtr-uniform">
+                <div class="col-12"><input type="text" name="username" placeholder="Felhasználónév" required /></div>
+                <div class="col-12"><input type="password" name="password" placeholder="Jelszó" required /></div>
+                <div class="col-12"><input type="password" name="password2" placeholder="Jelszó újra" required /></div>
+                <div class="col-12"><input type="submit" value="Regisztráció" class="primary" /></div>
+            </div>
+        </form>
+        <p><a th:href="@{/login}" class="button">Bejelentkezés</a> | <a th:href="@{/}" class="button">Főoldal</a></p>
+    </div>
+</div>
+</div>
+</html>
