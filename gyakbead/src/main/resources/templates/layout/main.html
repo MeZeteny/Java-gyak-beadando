@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title th:text="${#strings.defaultString(title, 'F1 Adatbázis')}">F1 Adatbázis</title>
+
+    <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
+    <noscript><link rel="stylesheet" th:href="@{/assets/css/noscript.css}" /></noscript>
+
+    <th:block layout:fragment="css" />
+</head>
+
+<body class="is-preload no-sidebar">
+
+<div id="wrapper">
+
+
+    <section id="sidebar">
+        <div class="inner">
+            <nav>
+                <ul>
+                    <li><a th:href="@{/}">Főoldal</a></li>
+                    <li><a th:href="@{/adatbazis}">Adatbázis</a></li>
+                    <li><a th:href="@{/kapcsolat}">Kapcsolat</a></li>
+
+
+                    <li sec:authorize="hasAnyRole('USER', 'ADMIN')">
+                        <a th:href="@{/uzenetek}">Üzenetek</a>
+                    </li>
+
+                    <!-- Majd később -->
+                    <li><a href="#">Diagram</a></li>
+                    <li><a href="#">CRUD</a></li>
+                    <li><a href="#">Restful</a></li>
+
+
+                    <li sec:authorize="isAnonymous()">
+                        <a th:href="@{/register}">Regisztráció</a>
+                    </li>
+                    <li sec:authorize="isAnonymous()">
+                        <a th:href="@{/login}">Bejelentkezés</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()">
+                        <strong sec:authentication="name"></strong>
+                    </li>
+                    <li sec:authorize="isAuthenticated()">
+                        <form th:action="@{/logout}" method="post" style="display:inline; margin:0;">
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                            <a href="javascript:;"
+                               onclick="this.closest('form').submit()"
+                               class="button small">
+                                Kijelentkezés (<span sec:authentication="name"></span>)
+                            </a>
+                        </form>
+                    </li>
+
+
+                    <li sec:authorize="hasRole('ADMIN')">
+                        <a th:href="@{/admin/uzenetek}" class="button special fit">Admin panel</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+
+    <div id="main">
+        <div class="inner">
+            <th:block layout:fragment="content">
+                <!-- Ide kerül az adott oldal tartalma -->
+            </th:block>
+        </div>
+    </div>
+
+</div>
+
+
+<script th:src="@{/assets/js/jquery.min.js}"></script>
+<script th:src="@{/assets/js/jquery.scrollex.min.js}"></script>
+<script th:src="@{/assets/js/jquery.scrolly.min.js}"></script>
+<script th:src="@{/assets/js/browser.min.js}"></script>
+<script th:src="@{/assets/js/breakpoints.min.js}"></script>
+<script th:src="@{/assets/js/util.js}"></script>
+<script th:src="@{/assets/js/main.js}"></script>
+
+<th:block layout:fragment="scripts" />
+
+</body>
+</html>

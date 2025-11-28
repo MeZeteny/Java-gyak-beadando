@@ -1,0 +1,62 @@
+# ███████████████████████████████████████████████████████████
+# █ SPRING BOOT / MAVEN
+# ███████████████████████████████████████████████████████████
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# ███████████████████████████████████████████████████████████
+# █ IDE - IntelliJ IDEA
+# ███████████████████████████████████████████████████████████
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# ███████████████████████████████████████████████████████████
+# █ IDE - Eclipse
+# ███████████████████████████████████████████████████████████
+.classpath
+.project
+.settings/
+bin/
+
+# ███████████████████████████████████████████████████████████
+# █ LOG fájlok és adatbázis
+# ███████████████████████████████████████████████████████████
+*.log
+*.h2.db
+*.mv.db
+*.trace.db
+
+# ███████████████████████████████████████████████████████████
+# █ OS és ideiglenes fájlok
+# ███████████████████████████████████████████████████████████
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+*.swp
+*~
+
+# ███████████████████████████████████████████████████████████
+# █ Egyéb
+# ███████████████████████████████████████████████████████████
+/venv/
+/.env
+/local.properties
+application-local.yml
+application-local.properties
+
+# Ha van H2 adatbázis fájl
+database/
+
+# Ha van saját keystore vagy titkos kulcs
+*.jks
+*.p12
+
+# Ha van npm/node (nem valószínű, de biztosra)
+node_modules/
+npm-debug.log
