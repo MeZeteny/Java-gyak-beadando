@@ -18,9 +18,9 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/adatbazis", "/kapcsolat", "/register", "/assets/**", "/css/**", "/js/**").permitAll()
-                        .requestMatchers("/uzenetek").hasRole("USER")        // csak USER és ADMIN
-                        .requestMatchers("/admin/**").hasRole("ADMIN")       // csak ADMIN
+                        .requestMatchers("/", "/adatbazis", "/kapcsolat", "/register", "/diagram", "/assets/**", "/css/**", "/js/**", "/crud/**", "/api/pilotak", "/api/pilotak/**", "/api-docs").permitAll()
+                        .requestMatchers("/uzenetek").authenticated()       // csak USER és ADMIN
+                        .requestMatchers("/admin").hasRole("ADMIN")       // csak ADMIN
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

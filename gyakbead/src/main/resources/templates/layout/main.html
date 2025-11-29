@@ -31,10 +31,13 @@
                         <a th:href="@{/uzenetek}">Üzenetek</a>
                     </li>
 
-                    <!-- Majd később -->
-                    <li><a href="#">Diagram</a></li>
-                    <li><a href="#">CRUD</a></li>
-                    <li><a href="#">Restful</a></li>
+
+                    <li>
+                        <a th:href="@{/diagram}">Diagram</a>
+                    </li>
+                    <li><a th:href="@{/crud/pilota}">CRUD</a></li>
+
+                    <li><a th:href="@{/api-docs}">Restful</a></li>
 
 
                     <li sec:authorize="isAnonymous()">
@@ -59,7 +62,7 @@
 
 
                     <li sec:authorize="hasRole('ADMIN')">
-                        <a th:href="@{/admin/uzenetek}" class="button special fit">Admin panel</a>
+                        <a th:href="@{/admin}" class="button special fit">Admin panel</a>
                     </li>
                 </ul>
             </nav>
