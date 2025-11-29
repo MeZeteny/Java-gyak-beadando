@@ -1,37 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <title>Kapcsolat – F1 Adatbázis</title>
-    <link rel="stylesheet" th:href="@{/assets/css/main.css}" />
-    <noscript><link rel="stylesheet" th:href="@{/assets/css/noscript.css}" /></noscript>
-</head>
-<body class="is-preload">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}">
 
-<section id="sidebar">
-    <div class="inner">
-        <nav>
-            <ul>
-                <li><a th:href="@{/}">Főoldal</a></li>
-                <li><a th:href="@{/adatbazis}">Adatbázis</a></li>
-                <li><a th:href="@{/kapcsolat}">Kapcsolat</a></li>
-                <li><a href="#two">Üzenetek</a></li>
-                <li><a href="#three">Diagram</a></li>
-                <li><a href="#three">CRUD</a></li>
-                <li><a href="#three">Restful</a></li>
-                <li><a href="#three">Regisztráció</a></li>
-                <li><a href="#three">Bejelentkezés</a></li>
-            </ul>
-        </nav>
-    </div>
-</section>
+<div layout:fragment="content">
 
 <div id="wrapper">
 
     <div id="main" class="container">
         <h1>Kapcsolat</h1>
 
-        <!-- Siker üzenet -->
         <div th:if="${siker}" class="box" style="background:#d4edda;color:#155724;padding:15px;border-radius:5px;margin-bottom:20px;">
             Köszönjük! Az üzeneted elküldve és elmentve az adatbázisba!
         </div>
@@ -64,13 +42,6 @@
         </form>
     </div>
 </div>
+</div>
 
-<script th:src="@{/assets/js/jquery.min.js}"></script>
-<script th:src="@{/assets/js/jquery.scrollex.min.js}"></script>
-<script th:src="@{/assets/js/jquery.scrolly.min.js}"></script>
-<script th:src="@{/assets/js/browser.min.js}"></script>
-<script th:src="@{/assets/js/breakpoints.min.js}"></script>
-<script th:src="@{/assets/js/util.js}"></script>
-<script th:src="@{/assets/js/main.js}"></script>
-</body>
 </html>
