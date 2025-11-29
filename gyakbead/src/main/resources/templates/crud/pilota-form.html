@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}">
+<div layout:fragment="content">
+    <section>
+        <header class="major">
+            <h1 th:text="${pilota.az == null} ? 'Új pilóta' : 'Pilóta szerkesztése'">Új pilóta</h1>
+        </header>
+
+        <div style="max-width: 600px; margin: 0 auto;">
+            <form th:action="@{${pilota.az == null} ? '/crud/pilota/uj' : '/crud/pilota/szerkesztes/' + ${pilota.az}}"
+                  th:object="${pilota}" method="post">
+
+                <div class="row gtr-uniform">
+                    <div class="col-12">
+                        <input type="text" th:field="*{nev}" placeholder="Név" required />
+                    </div>
+                    <div class="col-6 col-12-xsmall">
+                        <input type="text" th:field="*{nemzet}" placeholder="Nemzetiség" required />
+                    </div>
+                    <div class="col-6 col-12-xsmall">
+                        <input type="date" th:field="*{szuldat}" required />
+                    </div>
+                    <div class="col-12" style="margin-top: 2em;">
+                        <ul class="actions">
+                            <li><input type="submit" value="Mentés" class="primary" /></li>
+                            <li><a th:href="@{/crud/pilota}" class="button">Mégse</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+</html>

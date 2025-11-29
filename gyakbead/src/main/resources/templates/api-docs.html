@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}">
+<div layout:fragment="content">
+    <section>
+        <header class="major"><h1>RESTful API Dokumentáció</h1></header>
+        <p><strong>Elérhető bárki számára bejelentkezés nélkül!</strong></p>
+        <p>Alap URL: <code>http://localhost:8080/api/pilotak</code></p>
+
+        <h2>Elérhető végpontok</h2>
+        <table>
+            <tr><th>Módszer</th><th>URL</th><th>Leírás</th></tr>
+            <tr><td>GET</td><td>/api/pilotak</td><td>Összes pilóta</td></tr>
+            <tr><td>GET</td><td>/api/pilotak/1</td><td>Egy pilóta</td></tr>
+            <tr><td>POST</td><td>/api/pilotak</td><td>Új pilóta</td></tr>
+            <tr><td>PUT</td><td>/api/pilotak/1</td><td>Módosítás</td></tr>
+            <tr><td>DELETE</td><td>/api/pilotak/1</td><td>Törlés</td></tr>
+        </table>
+
+
+    </section>
+</div>
+</html>

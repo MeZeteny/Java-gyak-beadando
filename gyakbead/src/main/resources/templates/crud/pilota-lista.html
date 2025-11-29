@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}">
+<div layout:fragment="content">
+    <section>
+        <header class="major"><h1>Pilóták CRUD</h1></header>
+
+        <div style="text-align: right; margin-bottom: 1em;">
+            <a th:href="@{/crud/pilota/uj}" class="button primary">Új pilóta felvétele</a>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>Azonosító</th>
+                    <th>Név</th>
+                    <th>Nemzet</th>
+                    <th>Születési dátum</th>
+                    <th>Műveletek</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="p : ${pilotak}">
+                    <td th:text="${p.az}">1</td>
+                    <td th:text="${p.nev}">Lewis Hamilton</td>
+                    <td th:text="${p.nemzet}">GBR</td>
+                    <td th:text="${#temporals.format(p.szuldat, 'yyyy.MM.dd')}">1985.01.07</td>
+                    <td>
+                        <a th:href="@{/crud/pilota/szerkesztes/{id}(id=${p.az})}" class="button small">Szerkesztés</a>
+                        <a th:href="@{/crud/pilota/torles/{id}(id=${p.az})}"
+                           class="button small" style="background:#e74c3c;"
+                           onclick="return confirm('Biztosan törlöd ezt a pilótát?')">Törlés</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p style="text-align:center; margin-top: 2em;">
+            <a th:href="@{/}" class="button">Vissza a főoldalra</a>
+        </p>
+    </section>
+</div>
+</html>

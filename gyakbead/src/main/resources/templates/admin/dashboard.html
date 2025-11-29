@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}">
+
+<head>
+    <title>Admin Dashboard</title>
+</head>
+
+<div layout:fragment="content">
+    <section>
+        <header class="major">
+            <h1>Admin Dashboard</h1>
+            <p>Üdvözöllek, <strong th:text="${adminNev}">admin</strong>! Teljes irányítás alatt állsz!</p>
+        </header>
+
+        <!-- Statisztika kártyák -->
+        <div class="features">
+            <section>
+                <span class="icon solid fa-user major" style="color:#6c5ce7"></span>
+                <h3>Pilóták</h3>
+                <p class="big-number" th:text="${pilotakSzama}">854</p>
+                <a th:href="@{/crud/pilota}" class="button small">Kezelés →</a>
+            </section>
+
+            <section>
+                <span class="icon solid fa-flag-checkered major" style="color:#00d2d3"></span>
+                <h3>Nagydíjak</h3>
+                <p class="big-number" th:text="${gpSzama}">1120</p>
+            </section>
+
+            <section>
+                <span class="icon solid fa-envelope major" style="color:#fd79a8"></span>
+                <h3>Beérkezett üzenetek</h3>
+                <p class="big-number" th:text="${uzenetekSzama}">42</p>
+                <a th:href="@{/uzenetek}" class="button small">Megtekintés →</a>
+            </section>
+
+            <section>
+                <span class="icon solid fa-trophy major" style="color:#feca57"></span>
+                <h3>Eredmények</h3>
+                <p class="big-number" th:text="${eredmenyekSzama}">28 541</p>
+            </section>
+        </div>
+
+        <!-- Gyorslinkek -->
+        <div style="text-align:center; margin-top: 4em;">
+            <h3>Gyorsmenü</h3>
+            <ul class="actions">
+                <li><a th:href="@{/crud/pilota}" class="button primary">Pilóták kezelése</a></li>
+                <li><a th:href="@{/uzenetek}" class="button">Üzenetek</a></li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+<style>
+    .big-number { font-size: 3em; font-weight: bold; color: #6c5ce7; margin: 10px 0; }
+    .features section { background: rgba(255,255,255,0.05); border-radius: 12px; }
+</style>
+</html>
